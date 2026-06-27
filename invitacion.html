@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Primera Comunión</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* --- EFECTO SCROLL SNAP (Bloqueo de sección por pantalla) --- */
+        html, body {
+            font-family: 'Montserrat', sans-serif;
+            background-image: url('Fondo cielo.jpg');
+            background-repeat: no-repeat;    /* Evita que la imagen se parta en 4 o se repita */
+            background-size: cover;          /* Estira la imagen para que cubra toda la pantalla sin deformarse */
+            background-position: center;     /* Centra la imagen perfectamente en la pantalla */
+            background-attachment: fixed;    /* Mantiene el fondo quieto mientras deslizas las tarjetas */
+            height: 100vh;
+            margin: 0;
+            /* Esto hace que el scroll encaje mágicamente por secciones */
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* --- CONTENEDOR DE CADA PANTALLA COMPLETA --- */
+        .section {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            scroll-snap-align: start; /* Alinea cada sección al inicio de la pantalla */
+            position: relative;
+            padding: 20px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        /* --- NUBES FIJAS EN EL FONDO --- */
+        .background-clouds {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 100px;
+        }
+        .cloud::before, .cloud::after {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+        }
+        .cloud-1 {
+            width: 200px; height: 60px;
+            top: 10%; left: -200px;
+            animation: moveCloud 25s linear infinite;
+        }
+        .cloud-1::before { width: 100px; height: 100px; top: -50px; left: 30px; }
+        .cloud-1::after { width: 70px; height: 70px; top: -30px; left: 110px; }
+
+        .cloud-2 {
+            width: 150px; height: 45px;
+            top: 50%; left: -150px;
+            animation: moveCloud 18s linear infinite;
+            animation-delay: 5s;
+            opacity: 0.6;
+        }
+        .cloud-2::before { width: 70px; height: 70px; top: -35px; left: 20px; }
+        .cloud-2::after { width: 50px; height: 50px; top: -20px; left: 75px; }
+
+        @keyframes moveCloud {
+            0% { left: -250px; }
+            100% { left: 100%; }
+
+        }
+
+        h1, h2 {
+            font-family: 'Great Vibes', cursive;
+            color: #b89742;
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            color: #718096;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        /* --- MARCO DORADO (PANTALLA 1) --- */
+        .photo-frame {
+            width: 190px;
+            height: 190px;
+            margin: 0 auto 20px auto;
+            border-radius: 50%;
+            padding: 6px;
+            background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+            box-shadow: 0 8px 25px rgba(184, 151, 66, 0.25);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #fff;
+        }
+
+        /* --- DETALLES Y TEXTOS --- */
+        .details {
+            color: #4a5568;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .details p strong {
+            color: #2d3748;
+        }
+
+       
+/* --- NUEVO BOTÓN DE UBICACIÓN EN FORMA DE NUBE --- */
+.btn-location {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Configuración de tu imagen */
+    background-image: url('nube.png'); /* <-- Coloca aquí el nombre exacto de tu archivo de nube (.png) */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent; 
+    
+    /* Estilo del Texto dentro de la nube */
+    color: #2b5070; /* Un azul elegante para que contraste si tu nube es blanca */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    
+    /* Dimensiones ideales para formato nube */
+    width: 280px;  
+    height: 95px;  
+    padding: 0 0 5px 0; /* Ajuste por si el texto debe subir un poquito en la silueta */
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+    
+    /* Efecto de transición para la animación */
+    transition: transform 0.1s ease, filter 0.2s ease;
+    z-index: 10;
+}
+
+/* ANIMACIÓN AL PRESIONAR EL BOTÓN CON EL DEDO */
+.btn-location:active {
+    transform: scale(0.93); /* Hace el efecto de "hundirse" u oprimirse */
+    filter: brightness(0.9); /* Se oscurece un milímetro simulando la sombra del dedo */
+}
+
+.btn-location:hover {
+    transform: scale(1.02); /* Un efecto sutil al pasar el mouse (si lo ven en PC) */
+    background-color: transparent;
+}
+
+
+
+        /* INDICADOR ANIMADO DE DESLIZAR */
+        .scroll-hint {
+            margin-top: 20px;
+            font-size: 0.75rem;
+            color: #a0aec0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-6px); }
+            60% { transform: translateY(-3px); }
+        }
+/* --- CONTENEDOR PRINCIPAL: LOS DEJA EN FILA HORIZONTAL --- */
+.countdown-container {
+    display: flex !important;
+    flex-direction: row !important; /* Fuerza a que se pongan uno al lado del otro */
+    justify-content: center !important;
+    gap: 8px !important; /* Espacio ideal entre cuadritos para celular */
+    width: 100% !important;
+    margin: 25px 0 !important;
+}
+
+/* --- REEMPLAZA TU .time-box POR ESTE (Fija el tamaño en cuadritos) --- */
+.time-box {
+    background: rgba(255, 255, 255, 0.12) !important;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    
+    /* Borde azul cielo metálico */
+    border: 2px solid #87CEEB !important;
+    border-radius: 14px !important;
+    
+    /* TAMAÑO DE CUADRITO (Evita que se hagan rectángulos largos) */
+    width: 72px !important;  
+    height: 72px !important; 
+    
+    /* Centrado interno del número y texto */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 5px !important;
+    
+    /* Brillo metálico */
+    box-shadow: 
+        0 0 8px rgba(135, 206, 235, 0.8),
+        0 0 15px rgba(135, 206, 235, 0.4),
+        inset 0 0 6px rgba(255, 255, 255, 0.6),
+        inset 0 0 10px rgba(135, 206, 235, 0.5) !important;
+        
+    transition: all 0.3s ease;
+}
+    </style>
+</head>
+<body>
+	<div class="marquito-dorado"></div>
+    <div class="background-clouds">
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+    </div>
+
+    <section class="section">
+        <div class="card">
+            <p class="subtitle" style="text-shadow: 0px 0px 8px rgba(255, 255, 255, 1), 0px 0px 4px rgba(255, 255, 255, 0.8);">¡Estas invitado!</p>
+            <h1 style="text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.9), 0px 0px 4px rgba(255, 255, 255, 0.7);"> Mi Primera Comunión</h1>
+            
+            <div class="photo-frame">
+                <img src="Alex.png" id="festejado-img">
+            </div>
+		<h1 style="text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.9), 0px 0px 4px rgba(255, 255, 255, 0.7);"> Alexander</h1>
+            <div class="details" style="color: #000000; text-shadow: 1px 1px 2px #ffffff, -1px -1px 2px #ffffff, 0px 0px 8px #87CEEB, 0px 0px 12px #87CEEB;">
+                <p id="frase-aleatoria" style="font-style: italic; margin-bottom: 15px; font-size: 1.05rem; line-height: 1.5;" ></p>
+            </div>
+         
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="card">
+            <h2 style="text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.9), 0px 0px 4px rgba(255, 255, 255, 0.7);">
+    Detalles del Evento
+</h2>
+           <p class="subtitle" style="text-shadow: 0px 0px 8px rgba(255, 255, 255, 1), 0px 0px 4px rgba(255, 255, 255, 0.8);">Fecha & Lugar</p>            
+<div class="details" style="color: #000000; text-shadow: 1px 1px 2px #ffffff, -1px -1px 2px #ffffff, 0px 0px 8px #87CEEB, 0px 0px 12px #87CEEB;">
+    <p>Te invito a compartir la alegría de recibir mi primer encuentro con Jesús.</p>
+    <br>
+    <p><strong>Fecha:</strong> Sábado, 15 de Octubre</p>
+    <p><strong>Hora:</strong> 12:00 PM</p>
+    <p><strong>Lugar:</strong> Parroquia de San Francisco</p>
+<div class="countdown-container">
+    <div class="time-box">
+        <span id="days" style="text-shadow: 1px 1px 2px #ffffff, -1px -1px 2px #ffffff, 0px 0px 8px #87CEEB, 0px 0px 12px #87CEEB;">35</span>
+        <p style="text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.8);">Días</p>
+    </div>
+
+    <div class="time-box">
+        <span id="hours" style="text-shadow: 1px 1px 2px #ffffff, -1px -1px 2px #ffffff, 0px 0px 8px #87CEEB, 0px 0px 12px #87CEEB;">05</span>
+        <p style="text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.8);">Horas</p>
+    </div>
+
+    <div class="time-box">
+        <span id="minutes" style="text-shadow: 1px 1px 2px #ffffff, -1px -1px 2px #ffffff, 0px 0px 8px #87CEEB, 0px 0px 12px #87CEEB;">43</span>
+        <p style="text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.8);">Minutos</p>
+    </div>
+
+    <div class="time-box">
+        <span id="seconds" style="text-shadow: 1px 1px 2px #ffffff, -1px -1px 2px #ffffff, 0px 0px 8px #87CEEB, 0px 0px 12px #87CEEB;">45</span>
+        <p style="text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.8);">Segundos</p>
+    </div>
+</div>
+		<div class="btn-container" style="display: flex; justify-content: center; align-items: center; width: 100%; margin-top: 20px;">
+    <a href="https://maps.app.goo.gl/7wdha5qWZDGBESqv6" target="_blank" class="btn-location">
+        Ver Ubicación en Maps
+    </a>
+</div>
+        </div>
+    </section>
+
+<audio id="bg-music" src="audio fondo.mp3" autoplay loop></audio>
+
+<script>
+    // 1. Guardamos todas las frases de tus imágenes en una lista (Array)
+    const frases = [
+        "« Hoy recibo a Jesús en mi corazón y prometo seguir sus pasos cada día. »",
+        "« Que la fe guíe mi camino, la esperanza ilumine mis días y el amor llene mi corazón. »",
+        "« Con Jesús todo es posible. Confío, creo y tengo fe. »",
+        "« Este es solo el comienzo de una hermosa amistad que durará para siempre. »",
+        "« Jesús, gracias por amarme y acompañarme siempre. »",
+        "« Hoy doy gracias a Dios y a mi familia por este día tan especial. »",
+        "« Ser bueno, ser honesto, ser generoso... así quiero vivir mi fe cada día. »",
+        "« Que el amor de Dios me fortalezca, me proteja y me haga una mejor persona. »",
+        "« ¡Con Jesús en mi corazón, todo es mejor! »"
+    ];
+
+    // 2. Función matemática para elegir una al azar e insertarla al cargar la página
+    function cargarFraseAleatoria() {
+        const indiceAleatorio = Math.floor(Math.random() * frases.length);
+        document.getElementById('frase-aleatoria').innerText = frases[indiceAleatorio];
+    }
+
+    // Ejecutamos la función de la frase inmediatamente al abrir la invitación
+    window.onload = cargarFraseAleatoria;
+	// --- LÓGICA DE LA CUENTA REGRESIVA ---
+    // Configura aquí la fecha del evento (Año, Mes [0-11], Día, Hora, Minutos)
+    // Nota: Los meses en JavaScript empiezan en 0 (Enero = 0, Octubre = 9)
+    const fechaEvento = new Date(2026, 6, 12, 15, 0, 0).getTime();
+
+    const countdown = setInterval(function() {
+        const ahora = new Date().getTime();
+        const distancia = fechaEvento - ahora;
+
+        // Cálculos matemáticos para días, horas y minutos
+        const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+	const segundos = Math.floor((distancia % (1000 * 60)) / 1000); // <-- Cálculo de segundos
+        // Inyectamos los números en el HTML de forma bonita
+        document.getElementById("days").innerText = dias < 10 ? "0" + dias : dias;
+        document.getElementById("hours").innerText = horas < 10 ? "0" + horas : horas;
+        document.getElementById("minutes").innerText = minutos < 10 ? "0" + minutos : minutos;
+	document.getElementById("seconds").innerText = segundos < 10 ? "0" + segundos : segundos;
+
+        // Si la fecha ya pasó
+        if (distancia < 0) {
+            clearInterval(countdown);
+            document.querySelector(".countdown-container").innerHTML = "<p style='color:#b89742; font-weight:600;'>¡Llegó el gran día!</p>";
+        }
+    }, 1000);
+
+    // 3. Control de la música automática (Tu código anterior)
+    const music = document.getElementById('bg-music');
+
+    function iniciarMusicaAutomatica() {
+        if (music.paused) {
+            music.play().then(() => {
+                document.removeEventListener('click', iniciarMusicaAutomatica);
+                document.removeEventListener('touchstart', iniciarMusicaAutomatica);
+            }).catch(error => {
+                console.log("Esperando interacción para el audio.");
+            });
+        }
+    }
+
+    document.addEventListener('click', iniciarMusicaAutomatica);
+    document.addEventListener('touchstart', iniciarMusicaAutomatica);
+</script>
+
+</body>
+</html>
