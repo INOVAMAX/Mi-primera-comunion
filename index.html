@@ -13,24 +13,24 @@
             box-sizing: border-box;
         }
 
-        /* --- EFECTO SCROLL SNAP (Bloqueo de sección por pantalla) --- */
+        
         html, body {
             font-family: 'Montserrat', sans-serif;
             background-image: url('Fondo cielo.jpg');
-            background-repeat: no-repeat;    /* Evita que la imagen se parta en 4 o se repita */
-            background-size: cover;          /* Estira la imagen para que cubra toda la pantalla sin deformarse */
-            background-position: center;     /* Centra la imagen perfectamente en la pantalla */
-            background-attachment: fixed;    /* Mantiene el fondo quieto mientras deslizas las tarjetas */
+            background-repeat: no-repeat;    
+            background-size: cover;         
+            background-position: center;     
+            background-attachment: fixed;  
             height: 100vh;
             margin: 0;
-            /* Esto hace que el scroll encaje mágicamente por secciones */
+         
             scroll-snap-type: y mandatory;
             overflow-y: scroll;
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
-        /* --- CONTENEDOR DE CADA PANTALLA COMPLETA --- */
+       
         .section {
             height: 100vh;
             width: 100vw;
@@ -38,14 +38,14 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            scroll-snap-align: start; /* Alinea cada sección al inicio de la pantalla */
+            scroll-snap-align: start;
             position: relative;
             padding: 20px;
             text-align: center;
             box-sizing: border-box;
         }
 
-        /* --- NUBES FIJAS EN EL FONDO --- */
+    
         .background-clouds {
             position: fixed;
             top: 0;
@@ -107,7 +107,7 @@
             margin-bottom: 25px;
         }
 
-        /* --- MARCO DORADO (PANTALLA 1) --- */
+        
         .photo-frame {
             width: 190px;
             height: 190px;
@@ -126,7 +126,7 @@
             border: 3px solid #fff;
         }
 
-        /* --- DETALLES Y TEXTOS --- */
+      
         .details {
             color: #4a5568;
             line-height: 1.7;
@@ -138,53 +138,51 @@
         }
 
        
-/* --- NUEVO BOTÓN DE UBICACIÓN EN FORMA DE NUBE --- */
+
 .btn-location {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     
-    /* Configuración de tu imagen */
-    background-image: url('nube.png'); /* <-- Coloca aquí el nombre exacto de tu archivo de nube (.png) */
+    background-image: url('nube.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     background-color: transparent; 
     
-    /* Estilo del Texto dentro de la nube */
-    color: #2b5070; /* Un azul elegante para que contraste si tu nube es blanca */
+   
+    color: #2b5070;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 0.95rem;
     text-decoration: none;
-    
-    /* Dimensiones ideales para formato nube */
+
     width: 280px;  
     height: 95px;  
-    padding: 0 0 5px 0; /* Ajuste por si el texto debe subir un poquito en la silueta */
+    padding: 0 0 5px 0; 
     border: none;
     box-shadow: none;
     cursor: pointer;
     
-    /* Efecto de transición para la animación */
+  
     transition: transform 0.1s ease, filter 0.2s ease;
     z-index: 10;
 }
 
-/* ANIMACIÓN AL PRESIONAR EL BOTÓN CON EL DEDO */
+
 .btn-location:active {
-    transform: scale(0.93); /* Hace el efecto de "hundirse" u oprimirse */
-    filter: brightness(0.9); /* Se oscurece un milímetro simulando la sombra del dedo */
+    transform: scale(0.93); 
+    filter: brightness(0.9); 
 }
 
 .btn-location:hover {
-    transform: scale(1.02); /* Un efecto sutil al pasar el mouse (si lo ven en PC) */
+    transform: scale(1.02);
     background-color: transparent;
 }
 
 
 
-        /* INDICADOR ANIMADO DE DESLIZAR */
+        
         .scroll-hint {
             margin-top: 20px;
             font-size: 0.75rem;
@@ -199,17 +197,17 @@
             40% { transform: translateY(-6px); }
             60% { transform: translateY(-3px); }
         }
-/* --- CONTENEDOR PRINCIPAL: LOS DEJA EN FILA HORIZONTAL --- */
+
 .countdown-container {
     display: flex !important;
-    flex-direction: row !important; /* Fuerza a que se pongan uno al lado del otro */
+    flex-direction: row !important;
     justify-content: center !important;
-    gap: 8px !important; /* Espacio ideal entre cuadritos para celular */
+    gap: 8px !important; 
     width: 100% !important;
     margin: 25px 0 !important;
 }
 
-/* --- REEMPLAZA TU .time-box POR ESTE (Fija el tamaño en cuadritos) --- */
+
 .time-box {
     background: rgba(255, 255, 255, 0.12) !important;
     backdrop-filter: blur(4px);
@@ -219,18 +217,18 @@
     border: 2px solid #87CEEB !important;
     border-radius: 14px !important;
     
-    /* TAMAÑO DE CUADRITO (Evita que se hagan rectángulos largos) */
+ 
     width: 72px !important;  
     height: 72px !important; 
     
-    /* Centrado interno del número y texto */
+
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
     align-items: center !important;
     padding: 5px !important;
     
-    /* Brillo metálico */
+
     box-shadow: 
         0 0 8px rgba(135, 206, 235, 0.8),
         0 0 15px rgba(135, 206, 235, 0.4),
@@ -308,7 +306,7 @@
 <audio id="bg-music" src="audio fondo.mp3" autoplay loop></audio>
 
 <script>
-    // 1. Guardamos todas las frases de tus imágenes en una lista (Array)
+
     const frases = [
         "« Hoy recibo a Jesús en mi corazón y prometo seguir sus pasos cada día. »",
         "« Que la fe guíe mi camino, la esperanza ilumine mis días y el amor llene mi corazón. »",
@@ -321,42 +319,40 @@
         "« ¡Con Jesús en mi corazón, todo es mejor! »"
     ];
 
-    // 2. Función matemática para elegir una al azar e insertarla al cargar la página
+ 
     function cargarFraseAleatoria() {
         const indiceAleatorio = Math.floor(Math.random() * frases.length);
         document.getElementById('frase-aleatoria').innerText = frases[indiceAleatorio];
     }
 
-    // Ejecutamos la función de la frase inmediatamente al abrir la invitación
+    
     window.onload = cargarFraseAleatoria;
-	// --- LÓGICA DE LA CUENTA REGRESIVA ---
-    // Configura aquí la fecha del evento (Año, Mes [0-11], Día, Hora, Minutos)
-    // Nota: Los meses en JavaScript empiezan en 0 (Enero = 0, Octubre = 9)
+
     const fechaEvento = new Date(2026, 6, 12, 15, 0, 0).getTime();
 
     const countdown = setInterval(function() {
         const ahora = new Date().getTime();
         const distancia = fechaEvento - ahora;
 
-        // Cálculos matemáticos para días, horas y minutos
+       
         const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
         const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
-	const segundos = Math.floor((distancia % (1000 * 60)) / 1000); // <-- Cálculo de segundos
-        // Inyectamos los números en el HTML de forma bonita
+	const segundos = Math.floor((distancia % (1000 * 60)) / 1000); 
+  
         document.getElementById("days").innerText = dias < 10 ? "0" + dias : dias;
         document.getElementById("hours").innerText = horas < 10 ? "0" + horas : horas;
         document.getElementById("minutes").innerText = minutos < 10 ? "0" + minutos : minutos;
 	document.getElementById("seconds").innerText = segundos < 10 ? "0" + segundos : segundos;
 
-        // Si la fecha ya pasó
+        
         if (distancia < 0) {
             clearInterval(countdown);
             document.querySelector(".countdown-container").innerHTML = "<p style='color:#b89742; font-weight:600;'>¡Llegó el gran día!</p>";
         }
     }, 1000);
 
-    // 3. Control de la música automática (Tu código anterior)
+   
     const music = document.getElementById('bg-music');
 
     function iniciarMusicaAutomatica() {
