@@ -166,50 +166,53 @@
             }
        
 
+/* --- NUEVO BOTÓN DE UBICACIÓN EN FORMA DE NUBE --- */
 .btn-location {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     
-    background-image: url('nube.png');
+    /* Configuración de tu imagen */
+    background-image: url('nube.png'); /* <-- Coloca aquí el nombre exacto de tu archivo de nube (.png) */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     background-color: transparent; 
     
-   
-    color: #2b5070;
+    /* Estilo del Texto dentro de la nube */
+    color: #2b5070; /* Un azul elegante para que contraste si tu nube es blanca */
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 0.95rem;
     text-decoration: none;
-
+    
+    /* Dimensiones ideales para formato nube */
     width: 280px;  
     height: 95px;  
-    padding: 0 0 5px 0; 
+    padding: 0 0 5px 0; /* Ajuste por si el texto debe subir un poquito en la silueta */
     border: none;
     box-shadow: none;
     cursor: pointer;
     
-  
+    /* Efecto de transición para la animación */
     transition: transform 0.1s ease, filter 0.2s ease;
     z-index: 10;
 }
 
-
+/* ANIMACIÓN AL PRESIONAR EL BOTÓN CON EL DEDO */
 .btn-location:active {
-    transform: scale(0.93); 
-    filter: brightness(0.9); 
+    transform: scale(0.93); /* Hace el efecto de "hundirse" u oprimirse */
+    filter: brightness(0.9); /* Se oscurece un milímetro simulando la sombra del dedo */
 }
 
 .btn-location:hover {
-    transform: scale(1.02);
+    transform: scale(1.02); /* Un efecto sutil al pasar el mouse (si lo ven en PC) */
     background-color: transparent;
 }
 
 
 
-        
+        /* INDICADOR ANIMADO DE DESLIZAR */
         .scroll-hint {
             margin-top: 20px;
             font-size: 0.75rem;
@@ -224,6 +227,7 @@
             40% { transform: translateY(-6px); }
             60% { transform: translateY(-3px); }
         }
+
 /* --- CONTENEDOR PRINCIPAL: LOS DEJA EN FILA HORIZONTAL --- */
 .countdown-container {
     display: flex !important;
