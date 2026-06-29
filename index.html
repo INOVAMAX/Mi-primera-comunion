@@ -239,6 +239,35 @@
         
     transition: all 0.3s ease;
 }
+		/* Contenedor principal del texto y la flecha */
+        .contenedor-desliza {
+            text-align: center;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Estilos de la flecha / "v" */
+        .flecha {
+            display: block;
+            margin-top: 8px;
+            font-weight: bold;
+            font-size: 1.5rem;
+            /* Llamamos a la animación de abajo */
+            animation: moverAbajo 1.5s infinite ease-in-out;
+        }
+
+        /* Definición de la animación de rebote hacia abajo */
+        @keyframes moverAbajo {
+            0%, 100% {
+                transform: translateY(0);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translateY(10px); /* Se desplaza 10px hacia abajo */
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
@@ -249,6 +278,7 @@
     </div>
 
     <section class="section">
+		<img src="logotipo.png" alt="Parroquia Santísimo Nombre de Jesús" width="70%" height="auto">
         <div class="card">
             <p class="subtitle" style="text-shadow: 0px 0px 8px rgba(255, 255, 255, 1), 0px 0px 4px rgba(255, 255, 255, 0.8);">¡Estas invitado!</p>
             <h1 style="text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.9), 0px 0px 4px rgba(255, 255, 255, 0.7);"> Mi Primera Comunión</h1>
@@ -260,7 +290,10 @@
             <div class="details" style="color: #000000; text-shadow: 1px 1px 2px #ffffff, -1px -1px 2px #ffffff, 0px 0px 8px #87CEEB, 0px 0px 12px #87CEEB;">
                 <p id="frase-aleatoria" style="font-style: italic; margin-bottom: 15px; font-size: 1.05rem; line-height: 1.5;" ></p>
             </div>
-         
+         <div class="contenedor-desliza">
+        <span>Desliza</span>
+        <div class="flecha">v</div>
+    </div>
         </div>
     </section>
 
@@ -273,9 +306,11 @@
 <div class="details" style="color: #000000; text-shadow: 1px 1px 2px #ffffff, -1px -1px 2px #ffffff, 0px 0px 8px #87CEEB, 0px 0px 12px #87CEEB;">
     <p>Te invito a compartir la alegría de recibir mi primer encuentro con Jesús.</p>
     <br>
-    <p><strong>Fecha:</strong> Sábado, 15 de Octubre</p>
-    <p><strong>Hora:</strong> 12:00 PM</p>
-    <p><strong>Lugar:</strong> Parroquia de San Francisco</p>
+    <p><strong>Fecha:</strong> DOmingo, 12 de Julio</p>
+	<p><strong>Parroquia:</strong> Santisimo Nombre de Jesus</p>
+    <p><strong>Misa:</strong> 3:00 PM</p>
+	<p><strong>Lugar:</strong> Puebla 214</p>
+    <p><strong>Hora:</strong> 6:00 PM</p>
 <div class="countdown-container">
     <div class="time-box">
         <span id="days" style="text-shadow: 1px 1px 2px #ffffff, -1px -1px 2px #ffffff, 0px 0px 8px #87CEEB, 0px 0px 12px #87CEEB;">35</span>
