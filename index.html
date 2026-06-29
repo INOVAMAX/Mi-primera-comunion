@@ -136,7 +136,7 @@
         .details p strong {
             color: #2d3748;
         }
-/* Contenedor principal del texto y la flecha */
+
         .contenedor-desliza {
             text-align: center;
             font-size: 1.2rem;
@@ -144,7 +144,7 @@
             text-transform: uppercase;
         }
 
-        /* Estilos de la flecha / "v" */
+        
         .flecha {
             display: block;
             margin-top: 8px;
@@ -224,7 +224,16 @@
             40% { transform: translateY(-6px); }
             60% { transform: translateY(-3px); }
         }
-
+/* --- CONTENEDOR PRINCIPAL: LOS DEJA EN FILA HORIZONTAL --- */
+.countdown-container {
+    display: flex !important;
+    flex-direction: row !important; /* Fuerza a que se pongan uno al lado del otro */
+    justify-content: center !important;
+    gap: 8px !important; /* Espacio ideal entre cuadritos para celular */
+    width: 100% !important;
+    margin: 25px 0 !important;
+}
+		
 .time-box {
     background: rgba(255, 255, 255, 0.12) !important;
     backdrop-filter: blur(4px);
