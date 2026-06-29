@@ -13,24 +13,24 @@
             box-sizing: border-box;
         }
 
-        
+        /* --- EFECTO SCROLL SNAP (Bloqueo de sección por pantalla) --- */
         html, body {
             font-family: 'Montserrat', sans-serif;
             background-image: url('Fondo cielo.jpg');
-            background-repeat: no-repeat;    
-            background-size: cover;         
-            background-position: center;     
-            background-attachment: fixed;  
+            background-repeat: no-repeat;    /* Evita que la imagen se parta en 4 o se repita */
+            background-size: cover;          /* Estira la imagen para que cubra toda la pantalla sin deformarse */
+            background-position: center;     /* Centra la imagen perfectamente en la pantalla */
+            background-attachment: fixed;    /* Mantiene el fondo quieto mientras deslizas las tarjetas */
             height: 100vh;
             margin: 0;
-         
+            /* Esto hace que el scroll encaje mágicamente por secciones */
             scroll-snap-type: y mandatory;
             overflow-y: scroll;
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
-       
+        /* --- CONTENEDOR DE CADA PANTALLA COMPLETA --- */
         .section {
             height: 100vh;
             width: 100vw;
@@ -38,14 +38,14 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            scroll-snap-align: start;
+            scroll-snap-align: start; /* Alinea cada sección al inicio de la pantalla */
             position: relative;
             padding: 20px;
             text-align: center;
             box-sizing: border-box;
         }
 
-    
+        /* --- NUBES FIJAS EN EL FONDO --- */
         .background-clouds {
             position: fixed;
             top: 0;
@@ -107,7 +107,7 @@
             margin-bottom: 25px;
         }
 
-        
+        /* --- MARCO DORADO (PANTALLA 1) --- */
         .photo-frame {
             width: 190px;
             height: 190px;
@@ -126,7 +126,7 @@
             border: 3px solid #fff;
         }
 
-      
+        /* --- DETALLES Y TEXTOS --- */
         .details {
             color: #4a5568;
             line-height: 1.7;
@@ -137,35 +137,7 @@
             color: #2d3748;
         }
 
-        .contenedor-desliza {
-            text-align: center;
-            font-size: 1.2rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        
-        .flecha {
-            display: block;
-            margin-top: 8px;
-            font-weight: bold;
-            font-size: 1.5rem;
-            /* Llamamos a la animación de abajo */
-            animation: moverAbajo 1.5s infinite ease-in-out;
-        }
-
-        /* Definición de la animación de rebote hacia abajo */
-        @keyframes moverAbajo {
-            0%, 100% {
-                transform: translateY(0);
-                opacity: 0.7;
-            }
-            50% {
-                transform: translateY(10px); /* Se desplaza 10px hacia abajo */
-                opacity: 1;
-            }
        
-
 /* --- NUEVO BOTÓN DE UBICACIÓN EN FORMA DE NUBE --- */
 .btn-location {
     display: inline-flex;
@@ -227,7 +199,6 @@
             40% { transform: translateY(-6px); }
             60% { transform: translateY(-3px); }
         }
-
 /* --- CONTENEDOR PRINCIPAL: LOS DEJA EN FILA HORIZONTAL --- */
 .countdown-container {
     display: flex !important;
@@ -237,7 +208,8 @@
     width: 100% !important;
     margin: 25px 0 !important;
 }
-		
+
+/* --- REEMPLAZA TU .time-box POR ESTE (Fija el tamaño en cuadritos) --- */
 .time-box {
     background: rgba(255, 255, 255, 0.12) !important;
     backdrop-filter: blur(4px);
@@ -266,6 +238,7 @@
         inset 0 0 10px rgba(135, 206, 235, 0.5) !important;
         
     transition: all 0.3s ease;
+}
     </style>
 </head>
 <body>
@@ -277,9 +250,6 @@
 
     <section class="section">
         <div class="card">
-			<div style="display: flex; justify-content: center; width: 100%; padding: 20px 0;">
-  <img src="logotipo.png" alt="Parroquia Santísimo Nombre de Jesús" width="70%" height="auto">
-</div>
             <p class="subtitle" style="text-shadow: 0px 0px 8px rgba(255, 255, 255, 1), 0px 0px 4px rgba(255, 255, 255, 0.8);">¡Estas invitado!</p>
             <h1 style="text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.9), 0px 0px 4px rgba(255, 255, 255, 0.7);"> Mi Primera Comunión</h1>
             
@@ -290,10 +260,7 @@
             <div class="details" style="color: #000000; text-shadow: 1px 1px 2px #ffffff, -1px -1px 2px #ffffff, 0px 0px 8px #87CEEB, 0px 0px 12px #87CEEB;">
                 <p id="frase-aleatoria" style="font-style: italic; margin-bottom: 15px; font-size: 1.05rem; line-height: 1.5;" ></p>
             </div>
-         <div class="contenedor-desliza">
-        <span>Desliza</span>
-        <div class="flecha">v</div>
-    </div>
+         
         </div>
     </section>
 
@@ -306,12 +273,9 @@
 <div class="details" style="color: #000000; text-shadow: 1px 1px 2px #ffffff, -1px -1px 2px #ffffff, 0px 0px 8px #87CEEB, 0px 0px 12px #87CEEB;">
     <p>Te invito a compartir la alegría de recibir mi primer encuentro con Jesús.</p>
     <br>
-    <p><strong>Fecha:</strong> Domingo, 12 de Julio</p>
-	<p><strong>Parroquia:</strong> Santisimo Nombre de Jesus</p>
-    <p><strong>Misa:</strong> 3:00 PM</p>
-	
-    <p><strong>Lugar:</strong> Puebla 214</p>
-	<p><strong>Hora:</strong> 6:00 PM</p>
+    <p><strong>Fecha:</strong> Sábado, 15 de Octubre</p>
+    <p><strong>Hora:</strong> 12:00 PM</p>
+    <p><strong>Lugar:</strong> Parroquia de San Francisco</p>
 <div class="countdown-container">
     <div class="time-box">
         <span id="days" style="text-shadow: 1px 1px 2px #ffffff, -1px -1px 2px #ffffff, 0px 0px 8px #87CEEB, 0px 0px 12px #87CEEB;">35</span>
@@ -334,8 +298,8 @@
     </div>
 </div>
 		<div class="btn-container" style="display: flex; justify-content: center; align-items: center; width: 100%; margin-top: 20px;">
-    <a href="https://maps.app.goo.gl/gLBbYMLCoRg7MhPVA" target="_blank" class="btn-location">
-        Ubicación
+    <a href="https://maps.app.goo.gl/7wdha5qWZDGBESqv6" target="_blank" class="btn-location">
+        Ver Ubicación en Maps
     </a>
 </div>
         </div>
@@ -344,7 +308,7 @@
 <audio id="bg-music" src="audio fondo.mp3" autoplay loop></audio>
 
 <script>
-
+    // 1. Guardamos todas las frases de tus imágenes en una lista (Array)
     const frases = [
         "« Hoy recibo a Jesús en mi corazón y prometo seguir sus pasos cada día. »",
         "« Que la fe guíe mi camino, la esperanza ilumine mis días y el amor llene mi corazón. »",
@@ -357,40 +321,42 @@
         "« ¡Con Jesús en mi corazón, todo es mejor! »"
     ];
 
- 
+    // 2. Función matemática para elegir una al azar e insertarla al cargar la página
     function cargarFraseAleatoria() {
         const indiceAleatorio = Math.floor(Math.random() * frases.length);
         document.getElementById('frase-aleatoria').innerText = frases[indiceAleatorio];
     }
 
-    
+    // Ejecutamos la función de la frase inmediatamente al abrir la invitación
     window.onload = cargarFraseAleatoria;
-
+	// --- LÓGICA DE LA CUENTA REGRESIVA ---
+    // Configura aquí la fecha del evento (Año, Mes [0-11], Día, Hora, Minutos)
+    // Nota: Los meses en JavaScript empiezan en 0 (Enero = 0, Octubre = 9)
     const fechaEvento = new Date(2026, 6, 12, 15, 0, 0).getTime();
 
     const countdown = setInterval(function() {
         const ahora = new Date().getTime();
         const distancia = fechaEvento - ahora;
 
-       
+        // Cálculos matemáticos para días, horas y minutos
         const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
         const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
-	const segundos = Math.floor((distancia % (1000 * 60)) / 1000); 
-  
+	const segundos = Math.floor((distancia % (1000 * 60)) / 1000); // <-- Cálculo de segundos
+        // Inyectamos los números en el HTML de forma bonita
         document.getElementById("days").innerText = dias < 10 ? "0" + dias : dias;
         document.getElementById("hours").innerText = horas < 10 ? "0" + horas : horas;
         document.getElementById("minutes").innerText = minutos < 10 ? "0" + minutos : minutos;
 	document.getElementById("seconds").innerText = segundos < 10 ? "0" + segundos : segundos;
 
-        
+        // Si la fecha ya pasó
         if (distancia < 0) {
             clearInterval(countdown);
             document.querySelector(".countdown-container").innerHTML = "<p style='color:#b89742; font-weight:600;'>¡Llegó el gran día!</p>";
         }
     }, 1000);
 
-   
+    // 3. Control de la música automática (Tu código anterior)
     const music = document.getElementById('bg-music');
 
     function iniciarMusicaAutomatica() {
