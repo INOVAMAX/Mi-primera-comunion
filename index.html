@@ -225,16 +225,6 @@
             60% { transform: translateY(-3px); }
         }
 
-.countdown-container {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: center !important;
-    gap: 8px !important; 
-    width: 100% !important;
-    margin: 25px 0 !important;
-}
-
-
 .time-box {
     background: rgba(255, 255, 255, 0.12) !important;
     backdrop-filter: blur(4px);
@@ -244,18 +234,18 @@
     border: 2px solid #87CEEB !important;
     border-radius: 14px !important;
     
- 
+    /* TAMAÑO DE CUADRITO (Evita que se hagan rectángulos largos) */
     width: 72px !important;  
     height: 72px !important; 
     
-
+    /* Centrado interno del número y texto */
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
     align-items: center !important;
     padding: 5px !important;
     
-
+    /* Brillo metálico */
     box-shadow: 
         0 0 8px rgba(135, 206, 235, 0.8),
         0 0 15px rgba(135, 206, 235, 0.4),
@@ -263,7 +253,6 @@
         inset 0 0 10px rgba(135, 206, 235, 0.5) !important;
         
     transition: all 0.3s ease;
-}
     </style>
 </head>
 <body>
@@ -305,8 +294,11 @@
     <p>Te invito a compartir la alegría de recibir mi primer encuentro con Jesús.</p>
     <br>
     <p><strong>Fecha:</strong> Domingo, 12 de Julio</p>
-    <p><strong>Hora:</strong> 6:00 PM</p>
+	<p><strong>Parroquia:</strong> Santisimo Nombre de Jesus</p>
+    <p><strong>Misa:</strong> 3:00 PM</p>
+	
     <p><strong>Lugar:</strong> Puebla 214</p>
+	<p><strong>Hora:</strong> 6:00 PM</p>
 <div class="countdown-container">
     <div class="time-box">
         <span id="days" style="text-shadow: 1px 1px 2px #ffffff, -1px -1px 2px #ffffff, 0px 0px 8px #87CEEB, 0px 0px 12px #87CEEB;">35</span>
